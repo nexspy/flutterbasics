@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'myloginform.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,15 +9,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Hami Limbu'),
+      home: MyHomePage(title: 'Flutter World'),
     );
   }
 }
+
+
+
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -62,38 +67,52 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Are you ready??',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
+        title: Center(
+          child: Text(widget.title),
         ),
       ),
+      body: ListView (
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.all(10.0),
+            child: Image.network('https://picsum.photos/300/220'),
+          ),
+          MyLoginForm(),
+          Container(
+            height: 180.0,
+            color: Colors.orange[50],
+            // Center is a layout widget. It takes a single child and positions it
+            // in the middle of the parent.
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.all(40.0),
+//              color: const Color(0xFF00FF00),
+                  color: Colors.orangeAccent,
+                  width: 48.0,
+                  height: 48.0,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Are you ready Hello??',
+                    ),
+                    Text(
+                      '$_counter',
+                      style: Theme.of(context).textTheme.display1,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+//      bottomNavigationBar: BottomAppBar(
+//        child: Container(height: 50.0,),
+//      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
